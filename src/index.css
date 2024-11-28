@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    font-family: 'Inter Tight', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-black text-white antialiased overflow-x-hidden;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+}
+
+@supports (font: -apple-system-body) {
+  body {
+    font: -apple-system-body;
+    font-family: 'Inter Tight', sans-serif;
+  }
+}
+
+/* Guide Styles */
+.guide-content {
+  height: calc(100vh - 16rem);
+  overflow-y: auto;
+  padding-right: 1rem;
+  margin-right: -1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.guide-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.guide-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.guide-content::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+/* Frosted Glass Effect */
+.frosted {
+  @apply backdrop-blur-xl bg-white/[0.02] border border-white/[0.05];
+}
+
+/* Card Hover Effects */
+.card-hover {
+  @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-xl;
+}
+
+/* Gradient Animations */
+@keyframes tilt {
+  0%, 50%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(0.5deg);
+  }
+  75% {
+    transform: rotate(-0.5deg);
+  }
+}
+
+.animate-tilt {
+  animation: tilt 10s infinite linear;
+}
+
+.bg-gradient-conic {
+  background-image: conic-gradient(var(--tw-gradient-stops));
+}
+
+.bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+
+/* Premium Card Styles */
+.premium-card {
+  position: relative;
+  transform: translateZ(0);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: cardPulse 3s ease-in-out infinite;
+}
+
+.premium-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: 16px;
+  background: linear-gradient(
+    90deg,
+    rgba(235, 228, 0, 0.8),
+    rgba(235, 228, 0, 0.4)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.premium-card::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 16px;
+  background: linear-gradient(
+    90deg,
+    rgba(235, 228, 0, 0.7),
+    rgba(235, 228, 0, 0.4)
+  );
+  filter: blur(16px);
+  opacity: 0.8;
+  z-index: -1;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.premium-card .gradient-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(235, 228, 0, 0.35),
+    rgba(235, 228, 0, 0.12)
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  animation: gradientShift 8s linear infinite;
+}
+
+.premium-card:hover .gradient-bg {
+  opacity: 1;
+  animation: gradientMove 8s linear infinite;
+}
+
+.premium-card:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.premium-card:hover::after {
+  opacity: 1;
+  filter: blur(18px);
+}
+
+@keyframes cardPulse {
+  0%, 100% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.07);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.8;
+    filter: blur(16px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(20px);
+  }
+}
+
+@keyframes borderGlow {
+  0% {
+    background-position: 0% center;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    background-position: 200% center;
+    opacity: 0.3;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 0%;
+    opacity: 0.1;
+  }
+  50% {
+    background-position: 100% 100%;
+    opacity: 0.2;
+  }
+  100% {
+    background-position: 0% 0%;
+    opacity: 0.1;
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}

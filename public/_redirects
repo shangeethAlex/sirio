@@ -1,0 +1,6 @@
+/explore/*  /explore.html  200
+/brand/*    /brand.html     200
+/freeguide/*  /freeguide.html 200
+/guide/pro/*  /guide-upsell.html 200
+/mediakit/*  /mediakit.html 200
+/*         /index.html    200
