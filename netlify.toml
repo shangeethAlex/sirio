@@ -13,6 +13,26 @@
   status = 200
 
 [[redirects]]
+  from = "/freeguide"
+  to = "/freeguide.html"
+  status = 200
+
+[[redirects]]
+  from = "/mediakit"
+  to = "/mediakit.html"
+  status = 200
+
+[[redirects]]
+  from = "/explore"
+  to = "/explore.html"
+  status = 200
+
+[[redirects]]
+  from = "/guide/pro"
+  to = "/guide-upsell.html"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
